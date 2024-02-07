@@ -1,5 +1,5 @@
 import reactImg from "../src/assets/react-core-concepts.png";
-import componetImg from "../src/assets/components.png";
+import { CORE_CONCEPTS } from "./data";
 const reactDescriptions = ["Fundamental", "Crucial", "Core"];
 
 function genRandomInt(max) {
@@ -20,12 +20,24 @@ function Header() {
   );
 }
 
-function CoreConcept(props) {
+// function CoreConcept(props) {
+//   return (
+//     <li>
+//       <img src={props.img} alt={props.title} />
+//       <h3>{props.title}</h3>
+//       <p>{props.description}</p>
+//     </li>
+//   );
+// }
+
+// OR By Destructuring props(name should be same used in child prop)
+
+function CoreConcept({ title, image, description }) {
   return (
     <li>
-      <img src={props.img} alt={props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
     </li>
   );
 }
@@ -39,13 +51,14 @@ function App() {
           <h2>Core Concepts</h2>
           <ul>
             <CoreConcept
-              title="Components"
-              description="The core UI building Block"
-              img={componetImg}
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+              image={CORE_CONCEPTS[0].image}
             />
-            <CoreConcept title="props" />
-            <CoreConcept />
-            <CoreConcept />
+            {/* OR if the name is same u can pullout like this */}
+            <CoreConcept {...CORE_CONCEPTS[1]} />
+            <CoreConcept {...CORE_CONCEPTS[2]} />
+            <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
       </main>
