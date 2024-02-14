@@ -22,7 +22,7 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
-        <section>
+        <section id="examples">
           <menu>
             <TabButton>Component</TabButton>
             <TabButton>JSX</TabButton>
