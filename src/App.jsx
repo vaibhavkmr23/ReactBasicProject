@@ -1,13 +1,19 @@
+import { useState } from "react";
+
 import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/coreConcept";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  let handleSelect = (selectedButton)=>{
+  const [selectedTopic, setSelectedTopic] = useState("Please Click a Button");
+  let handleSelect = (selectedButton) => {
     // selected btns "components, props, state, jsx"
-    console.log(selectedButton)
-  }
+    setSelectedTopic(selectedButton);
+    console.log(selectedTopic);
+  };
+
+  console.log("App Component rendered");
   return (
     <div>
       <Header />
@@ -28,12 +34,36 @@ function App() {
         </section>
         <section id="examples">
           <menu>
-            <TabButton onSelect={() =>{handleSelect("components")}}>Component</TabButton>
-            <TabButton onSelect={() =>{handleSelect("JSX")}}>JSX</TabButton>
-            <TabButton onSelect={() =>{handleSelect("Props")}}>Props</TabButton>
-            <TabButton onSelect={() =>{handleSelect("State")}}>State</TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("components");
+              }}
+            >
+              Component
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("JSX");
+              }}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("Props");
+              }}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              onSelect={() => {
+                handleSelect("State");
+              }}
+            >
+              State
+            </TabButton>
           </menu>
-          Dynamic Content
+          {selectedTopic}
         </section>
       </main>
     </div>
