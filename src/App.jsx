@@ -13,15 +13,17 @@ function App() {
     console.log(selectedTopic);
   };
 
-  let tabContent =<p>Please Select a Topic</p>
-  if(selectedTopic){
-    tabContent = <div id="tab-content">
-    <h3>{EXAMPLES[selectedTopic].title}</h3>
-    <p>{EXAMPLES[selectedTopic].description}</p>
-    <pre>
-      <code>{EXAMPLES[selectedTopic].code}</code>
-    </pre>
-  </div>
+  let tabContent = <p>Please Select a Topic</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
   }
 
   console.log("App Component rendered");
@@ -46,6 +48,7 @@ function App() {
         <section id="examples">
           <menu>
             <TabButton
+              isSelected={selectedTopic === "components"}
               onSelect={() => {
                 handleSelect("components");
               }}
@@ -53,6 +56,7 @@ function App() {
               Component
             </TabButton>
             <TabButton
+              isSelected={selectedTopic === "jsx"}
               onSelect={() => {
                 handleSelect("jsx");
               }}
@@ -60,6 +64,7 @@ function App() {
               JSX
             </TabButton>
             <TabButton
+              isSelected={selectedTopic === "props"}
               onSelect={() => {
                 handleSelect("props");
               }}
@@ -67,6 +72,7 @@ function App() {
               Props
             </TabButton>
             <TabButton
+              isSelected={selectedTopic === "state"}
               onSelect={() => {
                 handleSelect("state");
               }}
@@ -76,7 +82,7 @@ function App() {
           </menu>
           {tabContent}
 
-            {/* Conditional Rendering on Click */}
+          {/* Conditional Rendering on Click */}
 
           {/* {!selectedTopic ? <p>Please Select a Topic</p> : null}
           {selectedTopic? <div id="tab-content">
