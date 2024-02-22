@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { CORE_CONCEPTS } from "./data";
+import { CORE_CONCEPTS, EXAMPLES } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/coreConcept";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("Please Click a Button");
+  const [selectedTopic, setSelectedTopic] = useState("components");
   let handleSelect = (selectedButton) => {
     // selected btns "components, props, state, jsx"
     setSelectedTopic(selectedButton);
@@ -43,27 +43,33 @@ function App() {
             </TabButton>
             <TabButton
               onSelect={() => {
-                handleSelect("JSX");
+                handleSelect("jsx");
               }}
             >
               JSX
             </TabButton>
             <TabButton
               onSelect={() => {
-                handleSelect("Props");
+                handleSelect("props");
               }}
             >
               Props
             </TabButton>
             <TabButton
               onSelect={() => {
-                handleSelect("State");
+                handleSelect("state");
               }}
             >
               State
             </TabButton>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
